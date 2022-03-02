@@ -1,7 +1,7 @@
 .header {
-  @include container;
   color: $mainColor;
   &-top {
+    @include container;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,7 +66,7 @@
       position: relative;
       &__counter {
         position: absolute;
-        right: -19px;
+        right: -15px;
         bottom: 0;
         height: 20px;
         width: 20px;
@@ -80,5 +80,57 @@
       }
     }
   }
-
+  &-bottom {
+    background-color: $color1;
+    margin-top: 20px;
+    &__menu-items {
+      @include container;
+      display: flex;
+      justify-content: space-between;
+    }
+    &__menu-item {
+      padding: 15px 0;
+      position: relative;
+      width: 10%;
+      text-align: center;
+      & > a {
+        position: relative;
+        padding: 14px 0;
+        &:before {
+          content: '';
+          transition: $transition;
+          right: 0;
+          left: auto;
+          width: 0%;
+        }
+        &:hover {
+          font-family: $SFProDisplaySemiBold;
+          transition: $transition;
+          &:before {
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background-color: $accentColor;
+            bottom: -3px;
+            right: auto;
+            left: 0;
+          }
+        }
+      }
+      &_active {
+        font-family: $SFProDisplaySemiBold;
+        & > a {
+          &:before {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background-color: $accentColor;
+            bottom: -3px;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
 }
