@@ -1,0 +1,12 @@
+@import 'fonts.scss';
+@import 'var.scss';
+@import 'mixins.scss';
+@import 'templates.scss';
+
+body {
+  font-family: $SFProDisplayRegular;
+}
+
+
+
+@import 'media.scss';
