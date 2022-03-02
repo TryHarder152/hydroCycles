@@ -1,0 +1,84 @@
+.header {
+  @include container;
+  color: $mainColor;
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+    font-family: $SFProDisplayBold;
+    font-size: 20px;
+    line-height: 24px;
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      max-width: 410px;
+      width: 100%;
+    }
+    &__menu-items {
+      display: flex;
+      justify-content: space-between;
+      max-width: 455px;
+      width: 100%;
+    }
+    &__menu-item {
+      transition: $transition;
+      &:hover {
+        color: $accentColor;
+      }
+    }
+    &__logotype {
+      display: block;
+      &-img {
+        display: block;
+        padding: 0 50px;
+      }
+    }
+    &__address {
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        background: url('../images/icons/map-pointer.svg') no-repeat center center;
+        height: 30px;
+        width: 30px;
+        left: -30px;
+        transform: translateY(-50%);
+      }
+    }
+    &__user-btns {
+      display: flex;
+      justify-content: space-between;
+      max-width: 105px;
+      width: 100%;
+    }
+    &__user-btn {
+      cursor: pointer;
+      & > i {
+        font-size: 25px;
+        transition: $transition;
+        &:hover {
+          color: $accentColor;
+        }
+      }
+    }
+    .basket-btn {
+      position: relative;
+      &__counter {
+        position: absolute;
+        right: -19px;
+        bottom: 0;
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        color: $color3;
+        font-size: 10px;
+        background-color: $accentColor;
+        border-radius: 50%;
+        text-align: center;
+        font-family: $SFProDisplayMedium;
+      }
+    }
+  }
+
+}
