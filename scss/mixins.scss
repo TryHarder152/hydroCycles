@@ -4,3 +4,9 @@
   padding: 0 15px;
   margin: 0 auto;
 }
+
+@mixin laptop {
+  @media (max-width: $maxWidthLaptop) {
+    @content;
+  }
+}

@@ -1,0 +1,38 @@
+@include laptop {
+  .header {
+    &-top {
+      &__hamburger {
+        display: flex;
+        align-items: center;
+        & i {
+          margin-right: 10px;
+        }
+      }
+      &__logotype {
+        display: none;
+      }
+      &__logotype-phone {
+        display: block;
+        background: url('../images/icons/logo-phone.svg') no-repeat center center;
+        height: 80px;
+        width: 100px;
+      }
+      &__menu-items {
+        display: none;
+      }
+      &__address {
+        display: none;
+      }
+      &__wrapper {
+        width:  370px;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .header-bottom {
+    display: none;
+  }
+}
