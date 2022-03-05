@@ -1,3 +1,24 @@
+@media (max-width: $minWidthDesktop) {
+  .categories {
+    grid-template-columns: repeat(2, 48%);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1185px) {
+  .main {
+    display: block;
+    max-width: 100%;
+    &-banner {
+      max-width: inherit;
+    }
+    &-stock {
+      max-width: inherit;
+      margin: 25px auto 0 auto;
+    }
+  }
+}
+
 @include laptop {
   .header {
     &-top {
@@ -31,8 +52,19 @@
   }
 }
 
+
+
 @media (max-width: 820px) {
-  .header-bottom {
-    display: none;
+  .header {
+    margin-bottom: 40px;
+    &-bottom {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 740px) {
+  .categories {
+    grid-template-columns: 100%;
   }
 }

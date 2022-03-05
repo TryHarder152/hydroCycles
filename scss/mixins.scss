@@ -5,6 +5,44 @@
   margin: 0 auto;
 }
 
+@mixin arrowLeft {
+  background: url('../images/arrow-left.svg') no-repeat center center;
+  height: 28px;
+  cursor: pointer;
+  width: 15px;
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+}
+
+@mixin arrowRight {
+  background: url('../images/arrow-right.svg') no-repeat center center;
+  height: 28px;
+  cursor: pointer;
+  width: 15px;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+}
+
+@mixin status {
+  padding: 8px 20px;
+  font-family: $ProximaNovaBold;
+  background-color: $accentColor;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $color3;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+}
+
+
+// media
 @mixin laptop {
   @media (max-width: $maxWidthLaptop) {
     @content;

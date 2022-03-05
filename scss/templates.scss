@@ -1,5 +1,6 @@
 .header {
   color: $mainColor;
+  margin-bottom: 80px;
   &-top {
     @include container;
     display: flex;
@@ -143,6 +144,177 @@
           }
         }
       }
+    }
+  }
+}
+
+.popular-goods {
+  @include container;
+  margin-bottom: 80px;
+  font-family: $SFProDisplayRegular;
+  color: $mainColor;
+  &__title {
+    font-family: $SFProDisplayBold;
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom: 25px;
+  }
+  &__categories {
+    display: flex;
+    margin-bottom: 35px;
+    font-size: 15px;
+    line-height: 18px;
+  }
+  &__category {
+    cursor: pointer;
+    padding: 0 0 10px 0;
+    transition: .3s all;
+    &_active {
+      font-family: $SFProDisplayMedium;
+      border-bottom: 2px solid $accentColor;
+    }
+    &:hover {
+      color: $accentColor;
+    }
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__arrow-left {
+    @include arrowLeft;
+    background: url('../images/arrow-left-reverse.svg') no-repeat center center;
+    left: -40px;
+  }
+  &__arrow-right {
+    @include arrowRight;
+    background: url('../images/arrow-right-reverse.svg') no-repeat center center;
+    right: -40px;
+  }
+  &__items {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    position: relative;
+    min-width: 270px;
+    width: 270px;
+    min-height: 400px;
+    border: 1px solid $color2;
+    border-radius: 3px;
+    padding: 15px 20px 25px 15px;
+    text-align: center;
+    transition: .3s all;
+    &:hover {
+      & .popular-goods__item-title,
+      & .popular-goods__item-price {
+        color: $accentColor;
+        &.sold-out{
+          color: $mainColor;
+        }
+      }
+      .popular-goods__item-view-product {
+        opacity: .9;
+      }
+    }
+    &-view-product {
+      position: absolute;
+      opacity: 0;
+      padding: 18px 22px;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      color: $mainColor;
+      background-color: $color3;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      transition: .3s all;
+      font-size: 20px;
+      line-height: 24px;
+      font-family: $ProximaNovaSemibold;
+      cursor: pointer;
+    }
+    &-status {
+      @include status;
+    }
+    &-favorite-btn {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      cursor: pointer;
+      & > i {
+        font-size: 24px;
+      }
+    }
+    &-img {
+      margin-top: 50px;
+      display: block;
+      position: relative;
+      width: 100%;
+    }
+    &-title {
+      font-size: 18px;
+      line-height: 21px;
+      margin-top: 15px;
+      transition: .3s all;
+    }
+    &-price {
+      font-size: 30px;
+      line-height: 36px;
+      font-family: $SFProDisplayBold;
+      margin-top: 25px;
+      transition: .3s all;
+      &.sold-out {
+        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 21px;
+        font-family: $ProximaNovaBold;
+      }
+    }
+    &-add-btn {
+      border-radius: 10px 0px 0px 0px;
+      background-color: $accentColor;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 10px 15px;
+      cursor: pointer;
+      &.sold-out-btn {
+        background-color: transparent;
+        color: $accentColor;
+        text-decoration: underline;
+        position: static;
+        text-align: center;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 0;
+      }
+      & > i {
+        color: $color3;
+        font-size: 20px;
+      }
+    }
+  }
+  &__btn-show-more {
+    padding: 15px 43px;
+    background-color: $color1;
+    text-transform: uppercase;
+    display: block;
+    max-width: 250px;
+    width: 100%;
+    text-align: center;
+    margin: 35px auto 0 auto;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.12em;
+    transition: .3s all;
+    &:hover {
+      background-color: $accentColor;
+      color: $color3;
     }
   }
 }
