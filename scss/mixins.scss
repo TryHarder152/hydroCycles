@@ -41,6 +41,439 @@
   letter-spacing: 0.1em;
 }
 
+@mixin goodsNavigation {
+  cursor: pointer;
+  padding: 0 0 10px 0;
+  transition: .3s color;
+  &_active {
+    font-family: $SFProDisplayMedium;
+    border-bottom: 2px solid $accentColor;
+  }
+  &:hover {
+    color: $accentColor;
+  }
+  &:not(:last-child) {
+    margin-right: 50px;
+  }
+}
+
+@mixin goodsItem {
+  position: relative;
+  min-width: 270px;
+  width: 270px;
+  min-height: 400px;
+  border: 1px solid $color2;
+  border-radius: 3px;
+  padding: 15px 20px 25px 15px;
+  text-align: center;
+  transition: .3s all;
+  margin-bottom: 35px;
+  &:hover {
+    & .goods__item-title,
+    & .goods__item-price {
+      color: $accentColor;
+      &.sold-out{
+        color: $mainColor;
+      }
+    }
+    .goods__item-view-product {
+      opacity: .9;
+    }
+  }
+  &-view-product {
+    position: absolute;
+    opacity: 0;
+    padding: 18px 22px;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    color: $mainColor;
+    background-color: $color3;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    transition: .3s all;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: $ProximaNovaSemibold;
+    cursor: pointer;
+  }
+  &-status {
+    @include status;
+  }
+  &-favorite-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    cursor: pointer;
+    & > i {
+      font-size: 24px;
+    }
+  }
+  &-img {
+    margin-top: 50px;
+    height: 200px;
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+  &-title {
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 15px;
+    transition: .3s all;
+  }
+  &-price {
+    font-size: 30px;
+    line-height: 36px;
+    font-family: $SFProDisplayBold;
+    margin-top: 25px;
+    transition: .3s all;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    &.sold-out {
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 21px;
+      font-family: $ProximaNovaBold;
+      position: relative;
+      bottom: 0px;
+    }
+  }
+  &-add-btn {
+    border-radius: 10px 0px 0px 0px;
+    background-color: $accentColor;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    &.sold-out-btn {
+      background-color: transparent;
+      color: $accentColor;
+      text-decoration: underline;
+      position: static;
+      text-align: center;
+      font-size: 16px;
+      line-height: 19px;
+      padding: 0;
+    }
+    & > i {
+      color: $color3;
+      font-size: 20px;
+    }
+  }
+}
+
+@mixin goodsCarousel {
+  @include container;
+  margin-bottom: 80px;
+  font-family: $SFProDisplayRegular;
+  color: $mainColor;
+  &__title {
+    font-family: $SFProDisplayBold;
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom: 25px;
+  }
+  &__categories {
+    display: flex;
+    margin-bottom: 35px;
+    font-size: 15px;
+    line-height: 18px;
+  }
+  &__category {
+    @include goodsNavigation;
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__arrow-left {
+    @include arrowLeft;
+    background: url('../images/arrow-left-reverse.svg') no-repeat center center;
+    left: -40px;
+  }
+  &__arrow-right {
+    @include arrowRight;
+    background: url('../images/arrow-right-reverse.svg') no-repeat center center;
+    right: -40px;
+  }
+  &__items {
+    animation: 1s ease sliderOpacity;
+    display: none;
+    justify-content: space-between;
+
+  }
+  &__item {
+    @include goodsItem;
+  }
+  &__btn-show-more {
+    padding: 15px 43px;
+    background-color: $color1;
+    text-transform: uppercase;
+    display: block;
+    max-width: 250px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.12em;
+    transition: .3s all;
+    &:hover {
+      background-color: $accentColor;
+      color: $color3;
+    }
+  }
+}
+
+@mixin header {
+  color: $mainColor;
+  margin-bottom: 80px;
+  &-top {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+    font-family: $SFProDisplayBold;
+    font-size: 20px;
+    line-height: 24px;
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      max-width: 455px;
+      width: 100%;
+    }
+    &__hamburger {
+      display: none;
+      font-size: 25px;
+      cursor: pointer;
+      & i {
+        transition: $transition;
+        &:hover {
+          color: $accentColor;
+        }
+      }
+    }
+    &__menu-items {
+      display: flex;
+      justify-content: space-between;
+      max-width: 455px;
+      width: 100%;
+    }
+    &__menu-item {
+      transition: $transition;
+      &:hover {
+        color: $accentColor;
+      }
+    }
+    &__logotype {
+      display: block;
+      background: url('../images/icons/logotype.svg') no-repeat center center;
+      height: 80px;
+      max-width: 100px;
+      width: 100%;
+      margin: 0 50px;
+    }
+    &__address {
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        background: url('../images/icons/map-pointer.svg') no-repeat center center;
+        height: 30px;
+        width: 30px;
+        left: -30px;
+        transform: translateY(-50%);
+      }
+    }
+    &__user-btns {
+      display: flex;
+      justify-content: space-between;
+      max-width: 105px;
+      width: 100%;
+    }
+    &__user-btn {
+      cursor: pointer;
+      & > i {
+        font-size: 25px;
+        transition: $transition;
+        &:hover {
+          color: $accentColor;
+        }
+      }
+    }
+    .basket-btn {
+      position: relative;
+      &__counter {
+        position: absolute;
+        right: -15px;
+        bottom: 0;
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        color: $color3;
+        font-size: 10px;
+        background-color: $accentColor;
+        border-radius: 50%;
+        text-align: center;
+        font-family: $SFProDisplayMedium;
+      }
+    }
+  }
+  &-bottom {
+    background-color: $color1;
+    margin-top: 20px;
+    &__menu-items {
+      @include container;
+      display: flex;
+      justify-content: space-between;
+    }
+    &__menu-item {
+      padding: 15px 0;
+      position: relative;
+      width: 10%;
+      text-align: center;
+      & > a {
+        position: relative;
+        padding: 14px 0;
+        &:before {
+          content: '';
+          transition: $transition;
+          right: 0;
+          left: auto;
+          width: 0%;
+        }
+        &:hover {
+          font-family: $SFProDisplaySemiBold;
+          transition: $transition;
+          &:before {
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background-color: $accentColor;
+            bottom: -3px;
+            right: auto;
+            left: 0;
+          }
+        }
+      }
+      &_active {
+        font-family: $SFProDisplaySemiBold;
+        & > a {
+          &:before {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background-color: $accentColor;
+            bottom: -3px;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin footer {
+  background-color: $color1;
+  padding: 40px 0 30px 0;
+  &__wrapper {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    height: 105px;
+  }
+  &__submit {
+    width: 300px;
+    font-family: $SFProDisplayBold;
+    font-size: 14px;
+    line-height: 17px;
+    &-title {
+      margin-bottom: 35px;
+    }
+    &-inputs {
+      width: 100%;
+      display: flex;
+    }
+    &-input-email {
+      border: none;
+      padding: 8px 0 8px 12px;
+      width: 100%;
+      font-family: $SFProDisplayRegular;
+      &::placeholder {
+        color: $color2;
+      }
+    }
+    &-input-btn {
+      font-size: 11px;
+      line-height: 13px;
+      text-transform: uppercase;
+      font-family: $SFProDisplaySemiBold;
+      background-color: $accentColor;
+      border: none;
+      color: $color3;
+      padding: 10px 15px;
+      transition: all .3s;
+      &:hover {
+        background-color: $color3;
+        color: $accentColor;
+      }
+    }
+  }
+  &__navigation {
+    max-width: 715px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      font-size: 14px;
+      line-height: 17px;
+      &-item {
+        transition: all .3s;
+        &:not(.footer__navigation-info-title):hover {
+          color: $accentColor;
+        }
+      }
+      &-title {
+        font-family: $SFProDisplayBold;
+      }
+    }
+    &-social-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 210px;
+      width: 100%;
+      font-size: 30px;
+    }
+    &-social-link {
+      transition: all .3s;
+      &:hover {
+        color: $accentColor;
+      }
+    }
+  }
+  &__copuright {
+    margin: 50px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    max-width: 370px;
+    width: 100%;
+    font-family: $SFProDisplayRegular;
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
 
 // media
 @mixin laptop {

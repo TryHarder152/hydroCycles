@@ -45,27 +45,69 @@ const searchCategories = document.querySelectorAll('.search-category'),
       searchContent = document.querySelectorAll('.search-content');
 
 
-function hideSearchContent() {
-  searchCategories.forEach((item) => {
+function hideSearchContent(btn, content) {
+  btn.forEach((item) => {
     item.classList.remove('search-category_active');
   });
-  searchContent.forEach(item => {
+  content.forEach(item => {
     item.classList.remove('search-content_active');
   });
 }
 
-function showSearchContent(index = 0) {
-  searchCategories[index].classList.add('search-category_active');
-  searchContent[index].classList.add('search-content_active');
+function showSearchContent(btn, content) {
+  let index = 0;
+  btn[index].classList.add('search-category_active');
+  content[index].classList.add('search-content_active');
 
-  searchCategories.forEach((item, index) => {
+  btn.forEach((item, index) => {
     item.addEventListener('click', () => {
-      hideSearchContent();
+      hideSearchContent(searchCategories, searchContent);
       item.classList.add('search-category_active');
-      searchContent[index].classList.add('search-content_active');
+      content[index].classList.add('search-content_active');
     });
   });
 }
 
-hideSearchContent();
-showSearchContent();
+hideSearchContent(searchCategories, searchContent);
+showSearchContent(searchCategories, searchContent);
+
+
+// tabsOfGoods
+// goods__category_active
+const popularTabsContent = document.querySelectorAll('.popular-goods__items'),
+      popularTabsBtn = document.querySelectorAll('.popular-goods__category'),
+      popularArrowLeft = document.querySelector('.popular-goods__arrow-left'),
+      popularArrowRight = document.querySelector('.popular-goods__arrow-right');
+
+const alsoBuyTabsContent = document.querySelectorAll('.also-buy__items'),
+      alsoBuyTabsBtn = document.querySelectorAll('.also-buy__category');
+
+
+function switchTabs(tabsBtns, tabsContent) {
+  tabsBtns.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      let currentBtn = item;
+
+      tabsBtns.forEach(item => {
+        item.classList.remove('goods__category_active');
+        
+      });
+
+      tabsContent.forEach(item => {
+        item.classList.remove('flex');
+      });
+
+      tabsContent[index].classList.add('flex');
+      currentBtn.classList.add('goods__category_active');
+    });
+  });
+}
+
+switchTabs(popularTabsBtn, popularTabsContent);
+
+switchTabs(alsoBuyTabsBtn, alsoBuyTabsContent);
+
+
+
+
+

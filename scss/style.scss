@@ -7,6 +7,7 @@
 
 body {
   font-family: $SFProDisplayRegular;
+  color: $mainColor;
 }
 
 .main {
@@ -204,8 +205,18 @@ body {
   }
 }
 
+.banner {
+  @include container;
+  width: 100%;
+  margin-bottom: 80px;
+}
+
 .block {
   display: block;
+}
+
+.flex {
+  display: flex;
 }
 
 .hide {
