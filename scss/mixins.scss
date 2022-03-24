@@ -6,7 +6,7 @@
 }
 
 @mixin arrowLeft {
-  background: url('../images/arrow-left.svg') no-repeat center center;
+  background: url("../images/arrow-left.svg") no-repeat center center;
   height: 28px;
   cursor: pointer;
   width: 15px;
@@ -17,7 +17,7 @@
 }
 
 @mixin arrowRight {
-  background: url('../images/arrow-right.svg') no-repeat center center;
+  background: url("../images/arrow-right.svg") no-repeat center center;
   height: 28px;
   cursor: pointer;
   width: 15px;
@@ -44,7 +44,7 @@
 @mixin goodsNavigation {
   cursor: pointer;
   padding: 0 0 10px 0;
-  transition: .3s color;
+  transition: 0.3s color;
   &_active {
     font-family: $SFProDisplayMedium;
     border-bottom: 2px solid $accentColor;
@@ -66,18 +66,18 @@
   border-radius: 3px;
   padding: 15px 20px 25px 15px;
   text-align: center;
-  transition: .3s all;
+  transition: 0.3s all;
   margin-bottom: 35px;
   &:hover {
     & .goods__item-title,
     & .goods__item-price {
       color: $accentColor;
-      &.sold-out{
+      &.sold-out {
         color: $mainColor;
       }
     }
     .goods__item-view-product {
-      opacity: .9;
+      opacity: 0.9;
     }
   }
   &-view-product {
@@ -92,7 +92,7 @@
     background-color: $color3;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    transition: .3s all;
+    transition: 0.3s all;
     font-size: 20px;
     line-height: 24px;
     font-family: $ProximaNovaSemibold;
@@ -121,14 +121,15 @@
     font-size: 18px;
     line-height: 21px;
     margin-top: 15px;
-    transition: .3s all;
+    transition: 0.3s all;
   }
   &-price {
     font-size: 30px;
+    width: 80%;
     line-height: 36px;
     font-family: $SFProDisplayBold;
     margin-top: 25px;
-    transition: .3s all;
+    transition: 0.3s all;
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -192,19 +193,18 @@
   }
   &__arrow-left {
     @include arrowLeft;
-    background: url('../images/arrow-left-reverse.svg') no-repeat center center;
+    background: url("../images/arrow-left-reverse.svg") no-repeat center center;
     left: -40px;
   }
   &__arrow-right {
     @include arrowRight;
-    background: url('../images/arrow-right-reverse.svg') no-repeat center center;
+    background: url("../images/arrow-right-reverse.svg") no-repeat center center;
     right: -40px;
   }
   &__items {
     animation: 1s ease sliderOpacity;
     display: none;
     justify-content: space-between;
-
   }
   &__item {
     @include goodsItem;
@@ -222,7 +222,7 @@
     font-size: 15px;
     line-height: 18px;
     letter-spacing: 0.12em;
-    transition: .3s all;
+    transition: 0.3s all;
     &:hover {
       background-color: $accentColor;
       color: $color3;
@@ -273,7 +273,7 @@
     }
     &__logotype {
       display: block;
-      background: url('../images/icons/logotype.svg') no-repeat center center;
+      background: url("../images/icons/logotype.svg") no-repeat center center;
       height: 80px;
       max-width: 100px;
       width: 100%;
@@ -282,9 +282,10 @@
     &__address {
       position: relative;
       &:before {
-        content: '';
+        content: "";
         position: absolute;
-        background: url('../images/icons/map-pointer.svg') no-repeat center center;
+        background: url("../images/icons/map-pointer.svg") no-repeat center
+          center;
         height: 30px;
         width: 30px;
         left: -30px;
@@ -342,7 +343,7 @@
         position: relative;
         padding: 14px 0;
         &:before {
-          content: '';
+          content: "";
           transition: $transition;
           right: 0;
           left: auto;
@@ -366,7 +367,7 @@
         font-family: $SFProDisplaySemiBold;
         & > a {
           &:before {
-            content: '';
+            content: "";
             position: absolute;
             height: 3px;
             width: 100%;
@@ -394,6 +395,7 @@
     font-family: $SFProDisplayBold;
     font-size: 14px;
     line-height: 17px;
+    margin-right: 25px;
     &-title {
       margin-bottom: 35px;
     }
@@ -419,7 +421,7 @@
       border: none;
       color: $color3;
       padding: 10px 15px;
-      transition: all .3s;
+      transition: all 0.3s;
       &:hover {
         background-color: $color3;
         color: $accentColor;
@@ -438,7 +440,7 @@
       font-size: 14px;
       line-height: 17px;
       &-item {
-        transition: all .3s;
+        transition: all 0.3s;
         &:not(.footer__navigation-info-title):hover {
           color: $accentColor;
         }
@@ -456,7 +458,7 @@
       font-size: 30px;
     }
     &-social-link {
-      transition: all .3s;
+      transition: all 0.3s;
       &:hover {
         color: $accentColor;
       }
@@ -474,7 +476,337 @@
   }
 }
 
+@mixin crumb {
+  @include container;
+  margin: -40px auto 40px auto;
+  font-family: $SFProDisplayRegular;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: $color2;
+  span {
+    position: relative;
+  }
+  span:not(:last-child) {
+    margin-right: 25px;
+    &:before {
+      content: "";
+      background: url(../images/arrow-more.svg) no-repeat center center;
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 15px;
+      width: 15px;
+    }
+  }
+}
 
+@mixin sorting {
+  @include container;
+  margin-bottom: 40px;
+  &__title {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    font-family: $SFProDisplayBold;
+    margin-bottom: 30px;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__tags {
+    display: flex;
+    max-width: 570px;
+    &-item {
+      margin-right: 10px;
+      padding: 4px 25px;
+      border-radius: 3px;
+      font-size: 14px;
+      line-height: 17px;
+      background-color: $color1;
+    }
+  }
+  &__dropDownMenu {
+    border: 1.5px solid $color6;
+    font-size: 14px;
+    line-height: 17px;
+    position: relative;
+    margin-right: 35px;
+    &:after {
+      content: "";
+      background: url(../images/arrow-more.svg) no-repeat center center;
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      right: 10px;
+      top: 16px;
+      transform: translateY(-50%) rotate(90deg);
+    }
+    &-item {
+      padding: 8px 50px 8px 20px;
+    }
+  }
+  &__square-btn {
+    background-image: url(../images/sort-square.svg);
+    height: 21px;
+    width: 23px;
+    margin-right: 10px;
+    cursor: pointer;
+    &.active {
+      background-image: url(../images/sort-square-active.svg);
+    }
+  }
+  &__list-btn {
+    background-image: url(../images/sort-list.svg);
+    height: 19px;
+    width: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    &.active {
+      background-image: url(../images/sort-list-active.svg);
+    }
+  }
+}
+
+@mixin goodsItemsFlex {
+  display: flex;
+  max-width: 870px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+@mixin goodsPage {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 70px;
+  & .filter {
+    max-width: 280px;
+    width: 100%;
+    margin-right: 20px;
+  }
+  & .goods__items_flex {
+    @include goodsItemsFlex;
+  }
+}
+
+@mixin pagesCounter {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 330px;
+  width: 100%;
+  &__item {
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: $ProximaNovaSemibold;
+    color: $color2;
+    margin-bottom: 100px;
+    cursor: pointer;
+    &.active {
+      border: 2px solid $accentColor;
+      color: $accentColor;
+    }
+  }
+}
+
+@mixin filterItemCheckbox {
+  &-item-checkbox {
+    margin-bottom: 40px;
+    &__title {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    &__img {
+      margin-right: 10px;
+    }
+    &__text {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      font-family: $SFProDisplaySemiBold;
+    }
+    &__search {
+      padding: 8px 18px;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+      &::placeholder {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #BDBEC2;
+      }
+    }
+    &__label {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      margin-bottom: 20px;
+      &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 220px;
+        max-width: 100%;
+      }
+    }
+    &__input {
+      margin-right: 7px;
+    }
+  }
+  &__show-more {
+    color: $accentColor;
+    text-decoration: underline;
+  }
+  &__stock-items {
+    display: flex;
+    justify-content: space-between;
+    & .notAvailibialy {
+      background-color: $color1;
+      color: $color2;
+    }
+  }
+  &__stock-item {
+    padding: 6px 15px;
+    font-family: $SFProDisplayBold;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    &_sale {
+      background-color: $accentColor;
+      color: $color3;
+    }
+    &_new {
+      background-color: $color7;
+      color: $color3;
+    }
+    &_hit {
+      background-color: $color7;
+      color: $color3;
+    }
+    &_diller {
+      background-color: $mainColor;
+      color: $color3;
+    }
+  }
+  &__btn {
+    padding: 15px 80px;
+    background-color: $color1;
+    color: $color6;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+  &__moreParameters {
+    text-align: center;
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 13px;
+    line-height: 16px;
+    &:after {
+      content: '';
+      background-image: url(../images/icons/arrow-up.svg);
+      transform: rotate(180deg);
+      width: 11px;
+      height: 9px;
+      position: absolute;
+      right: 40px;
+      top: 20%;
+    }
+  }
+  &__reset {
+    text-align: center;
+    font-size: 13px;
+    line-height: 16px;
+    text-decoration: underline;
+    color: $color2;
+  }
+}
+
+@mixin filterPrice {
+  &__price {
+    margin-bottom: 40px;
+    &-title {
+      display: flex;
+      margin-bottom: 20px;
+      &-img {
+        margin-right: 10px;
+      }
+      &-text {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        font-family: $SFProDisplaySemiBold;
+      }
+    }
+    &-range {
+      height: 1px;
+      background-color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+    &-differences {
+      display: flex;
+      justify-content: space-between;
+      color: $color2;
+      & span {
+        text-decoration-line: underline;
+        color: $mainColor;
+        margin-left: 10px;
+      }
+      &-from {
+      }
+      &-to {
+      }
+    }
+  }
+}
+
+@mixin filterEngine {
+  &__engine {
+    &-power,
+    &-torque,
+    &-speed {
+      border-bottom: 2px solid $color2;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+    &-title {
+      margin-bottom: 15px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      font-family: $SFProDisplaySemiBold;
+    }
+    &-value {
+      padding-right: 20px;
+      position: relative;
+      &:after {
+        content: '';
+        background-image: url(../images/icons/arrow-up.svg);
+        transform: rotate(180deg);
+        position: absolute;
+        right: 0;
+        top: 10%;
+        height: 9px;
+        width: 11px;
+      }
+    }
+  }
+}
 // media
 @mixin laptop {
   @media (max-width: $maxWidthLaptop) {

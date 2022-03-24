@@ -104,9 +104,25 @@ function switchTabs(tabsBtns, tabsContent) {
 }
 
 switchTabs(popularTabsBtn, popularTabsContent);
-
 switchTabs(alsoBuyTabsBtn, alsoBuyTabsContent);
 
+
+// dropDownMenuFooter
+let dropDownMenuBtn = document.querySelectorAll('.dropDown-toggle'),
+    dropDownMenuContent = document.querySelectorAll('.dropDown-content');
+
+function toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent) {
+  dropDownMenuBtn.forEach((btn, index) => {
+    btn.addEventListener('click', event => {
+      if (event.target.closest('.dropDown-toggle')) {
+        dropDownMenuContent[index].classList.toggle('active');
+        btn.classList.toggle('rotate90Degree');
+      }
+    });
+  });
+}
+
+toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent);
 
 
 
