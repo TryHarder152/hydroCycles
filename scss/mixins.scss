@@ -807,6 +807,158 @@
     }
   }
 }
+
+@mixin product {
+  @include container;
+  margin-bottom: 80px;
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-info {
+    width: 500px;
+    &__status {
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: 0.12em;
+      color: $color3;
+      background-color: $accentColor;
+      padding: 13px 25px;
+      display: inline-block;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+    &__img {
+      width: 100%;
+      margin-bottom: 20px;
+      & > img {
+        width: 100%;
+      }
+    }
+    &__price {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 48px;font-weight: 700;
+      font-size: 40px;
+      line-height: 48px;
+      font-family: $ProximaNovaBold;
+      text-align: center;
+      margin-bottom: 20px;
+      &_old {
+        margin-top: 5px;
+        font-size: 30px;
+        line-height: 36px;
+        color: $color2;
+      }
+    }
+    &__cheaper {
+      font-size: 15px;
+      line-height: 18px;
+      color: $accentColor;
+      text-align: center;
+    }
+  }
+  &-specifications {
+    width: 570px;
+    &__title {
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 36px;
+      font-family: $SFProDisplayBold;
+      margin-bottom: 10px;
+    }
+    &__article {
+      font-size: 15px;
+      line-height: 18px;
+      margin-bottom: 25px;
+    }
+    &__rating {
+      display: flex;
+      justify-content: space-between;
+      width: 240px;
+      align-items: center;
+      margin-bottom: 50px;
+      &-favorite {
+        
+      }
+      &-list {
+
+      }
+      &-stars {
+        & > img {
+          &:not(:last-child) {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+    &__tabs {
+      &-titles {
+        display: flex;
+        & .active {
+          font-weight: 700;
+          font-family: $SFProDisplayBold;
+          color: $mainColor;
+          position: relative;
+          margin-bottom: 25px;
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            height: 2px;
+            width: 100%;
+            background-color: $accentColor;
+          }
+        }
+      }
+      &-title {
+        color: $color2;
+        font-size: 20px;
+        line-height: 24px;
+        &:not(:last-child) {
+          margin-right: 35px;
+        }
+      }
+    }
+    &__characteristic {
+      &-Manufacturer {
+        display: flex;
+        justify-content: space-between;
+        width: 440px;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid $color6;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        & > span {
+          display: block;
+          margin-right: 50px;
+          width: 100px;
+          text-align: start;
+        }
+      }
+      &-showMore {
+        font-size: 14px;
+        line-height: 17px;
+        color: $accentColor;
+        text-decoration: underline;
+        margin-bottom: 45px;
+      }
+      &-buyBtn {
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: $color3;
+        padding: 16px 53px;
+        background-color: $accentColor;
+        display: inline-block;
+        border-radius: 3px;
+      }
+    }
+  }
+}
 // media
 @mixin laptop {
   @media (max-width: $maxWidthLaptop) {

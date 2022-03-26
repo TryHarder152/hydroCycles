@@ -44,7 +44,6 @@ showSlides(slideIndex);
 const searchCategories = document.querySelectorAll('.search-category'),
       searchContent = document.querySelectorAll('.search-content');
 
-
 function hideSearchContent(btn, content) {
   btn.forEach((item) => {
     item.classList.remove('search-category_active');
@@ -68,8 +67,14 @@ function showSearchContent(btn, content) {
   });
 }
 
-hideSearchContent(searchCategories, searchContent);
-showSearchContent(searchCategories, searchContent);
+function initializationSearchTab(searchCategories, searchContent) {
+  hideSearchContent(searchCategories, searchContent);
+  showSearchContent(searchCategories, searchContent);
+}
+
+initializationSearchTab(searchCategories, searchContent);
+
+
 
 
 // tabsOfGoods
