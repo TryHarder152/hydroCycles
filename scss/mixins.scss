@@ -62,6 +62,7 @@
   min-width: 270px;
   width: 270px;
   min-height: 400px;
+  max-height: 435px;
   border: 1px solid $color2;
   border-radius: 3px;
   padding: 15px 20px 25px 15px;
@@ -208,6 +209,7 @@
   }
   &__item {
     @include goodsItem;
+    
   }
   &__btn-show-more {
     padding: 15px 43px;
@@ -524,6 +526,7 @@
   }
   &__tags {
     display: flex;
+    flex-wrap: wrap;
     max-width: 570px;
     &-item {
       margin-right: 10px;
@@ -581,6 +584,9 @@
   max-width: 870px;
   width: 100%;
   flex-wrap: wrap;
+  &.goods__item {
+    max-height: 400px;
+  }
 }
 
 @mixin goodsPage {
@@ -625,11 +631,13 @@
   &-item-checkbox {
     margin-bottom: 40px;
     &__title {
+      cursor: pointer;
       display: flex;
       margin-bottom: 20px;
     }
     &__img {
       margin-right: 10px;
+      transform: rotate(90deg);
     }
     &__text {
       font-weight: 600;
@@ -654,11 +662,14 @@
       width: 50%;
       margin-bottom: 20px;
       &-wrapper {
-        display: flex;
+        display: none;
         justify-content: space-between;
         flex-wrap: wrap;
         width: 220px;
         max-width: 100%;
+        &.active {
+          display: flex;
+        }
       }
     }
     &__input {
@@ -668,10 +679,14 @@
   &__show-more {
     color: $accentColor;
     text-decoration: underline;
+    width: 100%;
   }
   &__stock-items {
-    display: flex;
+    display: none;
     justify-content: space-between;
+    &.active {
+      display: flex;
+    }
     & .notAvailibialy {
       background-color: $color1;
       color: $color2;

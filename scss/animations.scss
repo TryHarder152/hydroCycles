@@ -14,12 +14,21 @@
   100% {
     transform: rotate(90deg);
   }
+}
+
+@keyframes rotate180Degree {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(180deg);
   }
 }
 
 .rotate90Degree {
+  & .filter-item-checkbox__img {
+    animation: rotate180Degree .3s ease both;
+  }
   &:after {
     animation: rotate90Degree .3s ease both;
   }

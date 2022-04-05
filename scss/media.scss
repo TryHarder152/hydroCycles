@@ -86,6 +86,36 @@
       display: none;
     }
   }
+  .sorting {
+    &__wrapper {
+      flex-direction: column-reverse;
+      align-items: flex-start
+    }
+    &__inner {
+      border-top: 1px solid $color1;
+      border-bottom: 1px solid $color1;
+      width: 100%;
+      justify-content: start;
+      margin-bottom: 25px;
+    }
+    &__dropDownMenu {
+      margin-right: 0;
+      border: none;
+      &:after {
+        background-image: url(../images/sort.svg);
+        transform: rotate(180deg);
+        left: 0;
+        top: 25%;
+      }
+      &-item {
+        padding: 15px 25px 15px 30px;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 18px;
+        font-family: $SFProDisplaySemiBold;
+      }
+    }
+  }
   .product {
     &-wrapper {
       display: block;
@@ -174,5 +204,17 @@
     &__arrow-right {
       display: none;
     }
+  }
+}
+
+@media (max-width: 640px) {
+  .filter {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .sorting__tags-item {
+    margin-bottom: 5px;
   }
 }

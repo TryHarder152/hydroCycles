@@ -8,7 +8,6 @@ const sliderDots = document.querySelectorAll('.main-banner__dot');
 
 let slideIndex = 1;
 
-
 function showSlides(sliderNum) {
   if (sliderNum > slides.length) {
     slideIndex = 1;
@@ -129,6 +128,66 @@ function toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent) {
 
 toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent);
 
+
+// form delivery to server
+let formFooterSubmit = document.querySelector('.footer__submit');
+let footerinputs = formFooterSubmit.querySelectorAll('input');
+
+let formMessages = {
+  loading: 'Загрузка...',
+  success: 'Спасибо! Мы с вами свяжемся!',
+  failure: 'Что-то пошло не так...',
+  empty: 'Вы ничего не ввели'
+}
+
+function postData(form) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let statusMessage = document.createElement('div');
+    statusMessage.classList.add('statusMessage');
+    statusMessage.textContent = formMessages.loading;
+    form.append(statusMessage);
+
+    const REQUEST = new XMLHttpRequest();
+
+    REQUEST.open('POST', '../server/server.php');
+
+    const FORM_DATA = new FormData(form);
+
+    REQUEST.send(FORM_DATA);
+
+    for (let input of footerinputs) {
+      if (input.value == '' || input.value === null) {
+        statusMessage.textContent = formMessages.empty;
+
+        setTimeout(() => {
+          statusMessage.remove();
+        }, 1000);
+      } else {
+        REQUEST.addEventListener('load', () => {
+          if(REQUEST.status === 200) {
+            statusMessage.textContent = formMessages.success;
+
+            form.reset();
+
+            setTimeout(() => {
+              statusMessage.remove();
+            }, 1000);
+          } else {
+            statusMessage.textContent = formMessages.failure;
+
+            setTimeout(() => {
+              statusMessage.remove();
+            }, 1000);
+          }
+        });
+      }
+    }
+  });
+}
+
+postData(formFooterSubmit);
 
 
 
