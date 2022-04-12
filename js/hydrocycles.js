@@ -17,6 +17,9 @@ function toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent) {
 
 toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent);
 
+
+
+
 // class Card
 let cards = [
   {
@@ -25,7 +28,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo GTI 130hp SE Black Mango',
     price: 1049500,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: '',
@@ -33,7 +35,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo GTI 155hp SE Long Blue Metallic',
     price: 1100475,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -41,7 +42,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo GTR 230hp X California green',
     price: 1323700,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -49,7 +49,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo GTR 230hp STD Black / Gulfstream',
     price: 'Нет в наличии',
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -57,7 +56,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo GTX 300hp LTD Liquid Metal',
     price: 1543000,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -65,7 +63,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo Spark 60hp 2 up',
     price: 732345,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -73,7 +70,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo Spark GTS 90hp Rental',
     price: 857666,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -81,7 +77,6 @@ let cards = [
     title: 'Гидроцикл BRP SeaDoo WAKE 230hp PRO Teal blue',
     price: 1229711,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -89,7 +84,6 @@ let cards = [
     title: 'Гидроцикл Spark 2-UP 900 Ho Ace Chili Pepper',
     price: 587440,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -97,7 +91,6 @@ let cards = [
     title: 'Гидроцикл Spark 2-UP 900 Ho Ace Pineapple',
     price: 587440,
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -105,7 +98,6 @@ let cards = [
     title: 'Гидроцикл BRP Sea-doo Spark 2-UP 900 Ace Vanilla',
     price: 'Нет в наличии',
     productLink: 'product.html',
-    productParent: '.goods__items'
   },
   {
     sale: 'hide',
@@ -113,33 +105,34 @@ let cards = [
     title: 'Гидроцикл Spark 3-UP 900 HO Ace IBR Blueberry',
     price: 'Нет в наличии',
     productLink: 'product.html',
-    productParent: '.goods__items'
   }
 ];
 
 class Card {
-  constructor(hideSale, image, title, price, productPage, parentSelector) {
+  constructor(hideSale, image, title, price, productPage) {
     this.hideSale = hideSale;
     this.image = image;
     this.title = title;
     this.price = price;
     this.productPage = productPage;
 
-    this.parent = document.querySelector(parentSelector);
+    this.parent = document.querySelector('.goods__items');
+    this.card = '';
     this.dollar = 83.43;
     this.conversionToDollars();
   }
+  
 
   conversionToDollars() {
     this.price = this.price / this.dollar;
   }
 
   renderCard() {
-    let card = document.createElement('li');
-    card.classList.add('goods__item');
+    this.card = document.createElement('li');
+    this.card.classList.add('goods__item');
 
     if(!isNaN(this.price)) {
-      card.insertAdjacentHTML('afterbegin', `
+      this.card.innerHTML =  `
       <div class="goods__item-status ${this.hideSale}">Sale</div>
       <div class="goods__item-favorite-btn">
         <i class="fa-regular fa-heart"></i>
@@ -157,10 +150,10 @@ class Card {
       <div class="goods__item-add-btn">
         <i class="fa-solid fa-cart-shopping"></i>
       </div>
-      `);
-      this.parent.append(card);
+      `;
+      this.parent.append(this.card);
     } else {
-      card.insertAdjacentHTML('afterbegin', `
+      this.card.innerHTML = `
       <div class="goods__item-status ${this.hideSale}">Sale</div>
       <div class="goods__item-favorite-btn">
         <i class="fa-regular fa-heart"></i>
@@ -178,8 +171,8 @@ class Card {
       <div class="goods__item-add-btn sold-out-btn">
         <a href="#">Сообщить о поступлении</a>
       </div>
-      `);
-      this.parent.append(card);
+      `;
+      this.parent.append(this.card);
     }
   }
 
@@ -197,5 +190,5 @@ class Card {
   }
 }
 
-new Card().placeCards();
-
+let cardsPage = new Card();
+cardsPage.placeCards();

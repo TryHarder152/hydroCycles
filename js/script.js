@@ -83,32 +83,48 @@ const popularTabsContent = document.querySelectorAll('.popular-goods__items'),
       popularArrowLeft = document.querySelector('.popular-goods__arrow-left'),
       popularArrowRight = document.querySelector('.popular-goods__arrow-right');
 
-const alsoBuyTabsContent = document.querySelectorAll('.also-buy__items'),
-      alsoBuyTabsBtn = document.querySelectorAll('.also-buy__category');
+let activeElement = 0;
 
+function tabsInitialization(tabsBtns, tabsContent, prevBtn, nextBtn) {
+  
+  function switchTabs() {
+    if (activeElement < 0) {
+      activeElement = tabsContent.length - 1;
+    } else if (activeElement > tabsContent.length - 1) {
+      activeElement = 0;
+    }
+  
+    tabsContent.forEach(item => {
+      item.classList.remove('flex');
+    });
+  
+    tabsBtns.forEach(item => {
+      item.classList.remove('goods__category_active');
+    });
+  
+    tabsBtns[activeElement].classList.add('goods__category_active');
+    tabsContent[activeElement].classList.add('flex');
+  };
+  
+  prevBtn.addEventListener('click', () => {
+    --activeElement;
+    switchTabs();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    ++activeElement;
+    switchTabs();
+  });
 
-function switchTabs(tabsBtns, tabsContent) {
   tabsBtns.forEach((item, index) => {
     item.addEventListener('click', () => {
-      let currentBtn = item;
-
-      tabsBtns.forEach(item => {
-        item.classList.remove('goods__category_active');
-        
-      });
-
-      tabsContent.forEach(item => {
-        item.classList.remove('flex');
-      });
-
-      tabsContent[index].classList.add('flex');
-      currentBtn.classList.add('goods__category_active');
+      activeElement = index;
+      switchTabs();
     });
   });
 }
 
-switchTabs(popularTabsBtn, popularTabsContent);
-switchTabs(alsoBuyTabsBtn, alsoBuyTabsContent);
+tabsInitialization(popularTabsBtn, popularTabsContent, popularArrowLeft, popularArrowRight);
 
 
 // dropDownMenuFooter
