@@ -1,5 +1,7 @@
-guide/
-scss/
-server/
-prepros.config/
-README.txt/
+/guide
+/scss
+/server
+
+prepros.config
+.gitignore
+README.txt
