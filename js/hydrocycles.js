@@ -1,21 +1,10 @@
 'use strict';
 
 // dropDownMenuFooter
-let dropDownMenuBtn = document.querySelectorAll('.dropDown-toggle'),
-    dropDownMenuContent = document.querySelectorAll('.dropDown-content');
+import DropDownMenu from './DropDownMenu/DropDownMenu.js';
+let dropDownMenu = new DropDownMenu('.dropDown-toggle', '.dropDown-content');
+dropDownMenu.renderContent();
 
-function toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent) {
-  dropDownMenuBtn.forEach((btn, index) => {
-    btn.addEventListener('click', event => {
-      if (event.target.closest('.dropDown-toggle')) {
-        dropDownMenuContent[index].classList.toggle('active');
-        btn.classList.toggle('rotate90Degree');
-      }
-    });
-  });
-}
-
-toggleDropDownMenu(dropDownMenuBtn, dropDownMenuContent);
 
 
 
